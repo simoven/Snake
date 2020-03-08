@@ -105,9 +105,11 @@ void Start()
 void Stampa()
 {
 	int K = N*2;
+	attron(COLOR_PAIR(4));
 	for(int i = 0; i < K; i++)
 		printw("#");
 	printw("##");
+	attroff(COLOR_PAIR(4));
 	printw("\n");
 
 	for(int i = 0; i < N; i++)
@@ -117,9 +119,17 @@ void Stampa()
 			bool check = false;
 
 			if(j == 0)
+			{
+				attron(COLOR_PAIR(4));
 				printw("#");
+				attroff(COLOR_PAIR(4));
+			}
 			if(j == K)
+			{
+				attron(COLOR_PAIR(4));
 				printw("#");
+				attroff(COLOR_PAIR(4));
+			}
 
 			if(OstacoloX.size() > 0)
 			{
@@ -171,10 +181,12 @@ void Stampa()
 		printw("\n");
 	}
 
+	attron(COLOR_PAIR(4));
 	for(int i = 0; i < K; i++)
 		printw("#");
 
 	printw("##");
+	attroff(COLOR_PAIR(4));
 	printw("\n");
 
 	printw("Score : %u", score);
@@ -332,7 +344,8 @@ void Colori()
 	init_pair (1, COLOR_GREEN, COLOR_BLACK);
 	init_pair (2, COLOR_RED, COLOR_BLACK);
 	init_color (COLOR_YELLOW, 900, 900, 0);
-	init_pair (3, COLOR_YELLOW, COLOR_BLACK);
+	init_pair (3, COLOR_YELLOW, COLOR_YELLOW);
+	init_pair (4, COLOR_WHITE, COLOR_WHITE);
 }
 
 void Splash()
